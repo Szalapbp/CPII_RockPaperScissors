@@ -6,6 +6,13 @@ import java.awt.event.ActionListener;
 
 public class RockPaperScissorsFrame extends JFrame
 {
+    /*
+        Here is all of my JFrame components, one thing to note in the JPanels is the buttonPnl that I implemented,
+        it helped me to seperate the buttons from the extra labels I wanted to add. Also included here are the ints used
+        to count the wins and ties for each player during the session.
+
+        --Blake Szalapski
+    */
     JPanel mainPnl, topPnl, middlePnl, statsPnl, buttonPnl;
     JLabel rpsLabel, cpuLabel, playerLabel, tieLabel, playLabel;
     JTextArea rpsArea;
@@ -18,7 +25,13 @@ public class RockPaperScissorsFrame extends JFrame
     int ties = 0;
 
 
+/*
+    Here is my main frame method introducing all of the create methods for the various panels. Also I used the 3/4 screen
+    size for the frame again so that it wouldn't show up quite full screen but you can still see all of the components
+    clearly.
 
+    --Blake Szalapski
+ */
     public RockPaperScissorsFrame()
     {
         mainPnl = new JPanel();
@@ -42,6 +55,14 @@ public class RockPaperScissorsFrame extends JFrame
         setSize(frameW, frameH);
         setLocation((screenW - frameW) / 2, (screenH - frameH) / 2);
     }
+
+    /*
+        Here is my createTopPanel method, this contains the buttonPnl, which contains the different buttons for moves and
+        their accompanying image icons. Action listeners for each of the buttons are also included here.
+        I also included some image sizing and font changes from default to make it look a little better.
+
+        --Blake Szalapski
+     */
 
     public void createTopPanel()
     {
@@ -93,6 +114,12 @@ public class RockPaperScissorsFrame extends JFrame
         mainPnl.add(topPnl, BorderLayout.NORTH);
     }
 
+    /*
+        Here is my createMiddlePanel method, where I control the main text area that displays the outcomes of the game.
+        I have a label at the top of this panel to instruct the player to choose a move to play a round of
+        rock paper scissors. I also changed the background color of the text area as well as the fonts located here.
+     */
+
     public void createMiddlePanel()
     {
         middlePnl = new JPanel();
@@ -112,6 +139,11 @@ public class RockPaperScissorsFrame extends JFrame
         mainPnl.add(middlePnl, BorderLayout.CENTER);
 
     }
+
+    /*
+        Here is my createStatsPanel method where I display the session stats including wins and ties, as well as the
+        quit button. I have an event listener for the quit button as well as some more font changes at the bottom.
+     */
 
     public void createStatsPanel(){
         statsPnl = new JPanel();
@@ -151,6 +183,12 @@ public class RockPaperScissorsFrame extends JFrame
         tieField.setFont(new Font("Monospaced", Font.BOLD, 15));
         mainPnl.add(statsPnl, BorderLayout.SOUTH);
     }
+
+    /*
+        Here is the actual game logic, this is the classic if else statements for a rock paper scissors game. The outcomes
+        of the game will tell the stats panel who to give a point to either player cpu or tie, and also will tell the
+        middle panel what choices to give each of the players in the text area.
+     */
 
     private void playGame(String playerChoice) {
         String[] options = {"Rock", "Paper", "Scissors"};
